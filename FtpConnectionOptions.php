@@ -29,7 +29,7 @@ class FtpConnectionOptions
     private $password;
 
     /**
-     * @var int
+     * @var string
      */
     private $port;
 
@@ -83,7 +83,7 @@ class FtpConnectionOptions
         string $root,
         string $username,
         string $password,
-        int $port = 21,
+        string $port = "21",
         bool $ssl = false,
         int $timeout = 90,
         bool $utf8 = false,
@@ -98,7 +98,7 @@ class FtpConnectionOptions
         $this->root = $root;
         $this->username = $username;
         $this->password = $password;
-        $this->port = $port;
+        $this->port = intval($port);
         $this->ssl = $ssl;
         $this->timeout = $timeout;
         $this->utf8 = $utf8;
@@ -187,7 +187,7 @@ class FtpConnectionOptions
             $options['root'] ?? 'invalid://root-not-set',
             $options['username'] ?? 'invalid://username-not-set',
             $options['password'] ?? 'invalid://password-not-set',
-            $options['port'] ?? 21,
+            $options['port'] ?? "21",
             $options['ssl'] ?? false,
             $options['timeout'] ?? 90,
             $options['utf8'] ?? false,
